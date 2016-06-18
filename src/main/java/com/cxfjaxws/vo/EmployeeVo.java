@@ -2,6 +2,7 @@ package com.cxfjaxws.vo;
 
 import java.io.Serializable;
 import java.math.BigInteger;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class EmployeeVo implements Serializable {
@@ -13,7 +14,7 @@ public class EmployeeVo implements Serializable {
 	private String lastName;
 	private EmpAddr addr;
 	private String dept;
-	private Date doj;
+	private String doj;
 
 	public EmployeeVo(BigInteger id, String firstName, String lastName, EmpAddr addr, String dept, Date doj) {
 		super();
@@ -22,7 +23,7 @@ public class EmployeeVo implements Serializable {
 		this.lastName = lastName;
 		this.addr = addr;
 		this.dept = dept;
-		this.doj = doj;
+		this.doj = convertDateToString(doj);
 	}
 
 	public BigInteger getId() {
@@ -65,12 +66,18 @@ public class EmployeeVo implements Serializable {
 		this.dept = dept;
 	}
 
-	public Date getDoj() {
+	public String getDoj() {
 		return doj;
 	}
 
 	public void setDoj(Date doj) {
-		this.doj = doj;
+		convertDateToString(doj);
+	}
+
+	private String convertDateToString(Date doj) {
+		String pattern = "MM/dd/yyyy";
+	    SimpleDateFormat format = new SimpleDateFormat(pattern);	
+		return format.format(doj);
 	}
 
 	@Override

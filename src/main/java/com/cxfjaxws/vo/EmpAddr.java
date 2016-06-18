@@ -80,4 +80,10 @@ public class EmpAddr {
 		this.zipcode = zipcode;
 	}
 
+	@Override
+	public String toString() {
+		return "EmpAddr [dNo=" + dNo + ", line=" + line + ", street=" + street + ", city=" + city + ", state=" + state
+				+ ", country=" + country + ", zipcode=" + zipcode + "]";
+	}
+
 }
